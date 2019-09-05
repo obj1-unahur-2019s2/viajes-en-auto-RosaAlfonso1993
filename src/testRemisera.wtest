@@ -1,0 +1,31 @@
+import remiseras.*
+
+test "precio Viajes"{
+	/*
+	 * - _Roxana_: a Ludmila 180 pesos (18 * 10), a Ana María 300, a Teresa 220.
+		- _Gabriela_: a Ludmila 216 pesos (180 * 1.2), a Ana María 360, a Teresa 264.
+		- _Mariela_: lo mismo que Roxana.
+		- _Juana_: 200 pesos a todos.
+	 */
+	roxana.precioViaje(ludmila,10)
+	gabriela.precioViaje(ludmila,10)
+	mariela.precioViaje(ludmila,10)
+	juana.precioViaje(ludmila,10)
+	assert.equals(180, roxana.precioViaje(ludmila,10))
+	assert.equals(216, gabriela.precioViaje(ludmila,10))
+	assert.equals(180, mariela.precioViaje(ludmila,10))
+	assert.equals(200, juana.precioViaje(ludmila,10))
+}
+
+test "oficina"{
+	/*
+	 * - para un viaje de 10 kilómetros para Ana María, la remisera elegida es Juana, porque su precio de 200 pesos, 
+	 * es menor al de Roxana (300 pesos), y la diferencia es de más de 30 pesos.
+		- si el viaje es para Teresa, entonces Roxana ofrece 220 pesos y Juana 200. El precio de Juana es menor, 
+	* pero la diferencia no llega a 30 pesos. Por lo tanto, la remisera elegido es Roxana.
+		- si el viaje es de 4 kilómetros para Teresa, entonces Roxana cobra 88 pesos y Juana 100. El precio de Roxana es menor 
+	* pero la diferencia no es mayor a 30, por lo tanto Juana es la elegida.  
+	 */
+	 oficina.asignarRemiseras(roxana,juana)
+	 assert.equals(juana , oficina.remiseraElegidaParaViaje(anaMaria,10))
+}
